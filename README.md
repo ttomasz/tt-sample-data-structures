@@ -1,0 +1,1 @@
+Just some notes made while learning about data structures.
