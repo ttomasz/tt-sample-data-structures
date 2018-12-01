@@ -23,6 +23,15 @@ class LinkedList:
             temp = temp.next
         return array
 
+    def list_of_nodes(self) -> list:
+        """Function returns a list of nodes from the linked list."""
+        array = []
+        temp = self.head
+        while temp:
+            array.append(temp)
+            temp = temp.next
+        return array
+
     def add(self, value):
         """Function adds a new node with given value to the end of the linked list."""
         new_node = Node(value)
@@ -61,3 +70,46 @@ class LinkedList:
         temp = self.head
         self.head = Node(value)
         self.head.next = temp
+
+    def add_after_node(self, value, node: Node):
+        """Function adds a node with given value after specified node."""
+        temp = self.head
+        while temp:
+            if temp == node:
+                t1 = temp.next
+                temp.next = Node(value)
+                temp.next.next = t1
+                return
+            temp = temp.next
+        raise AttributeError("Error. Couldn't find the node.")
+
+    def add_before_node(self, value, node: Node):
+        """Function adds a node with given value before specified node."""
+        if self.head == node:
+            self.add_at_the_beginning(value)
+            return
+        temp = self.head
+        last = None
+        while temp:
+            if temp == node:
+                last.next = Node(value)
+                last.next.next = temp
+                return
+            last = temp
+            temp = temp.next
+        raise AttributeError("Error. Couldn't find the node.")
+
+    def remove_node(self, node: Node):
+        """Function removes given node from the linked list."""
+        if self.head == node:
+            self.remove_first()
+            return
+        temp = self.head
+        last = None
+        while temp:
+            if temp == node:
+                last.next = temp.next
+                return
+            last = temp
+            temp = temp.next
+        raise AttributeError("Error. Couldn't find the node.")
