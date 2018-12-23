@@ -113,3 +113,10 @@ class LinkedList:
             last = temp
             temp = temp.next
         raise AttributeError("Error. Couldn't find the node.")
+
+    def generator_iterator(self):
+        """Function that yields nodes from linked list."""
+        temp = self.head
+        while temp:
+            yield temp
+            temp = temp.next
