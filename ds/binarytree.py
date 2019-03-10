@@ -31,10 +31,10 @@ class BinaryTree:
         self._in_order_depth_first_traversal_recursive_helper_function(node.right, values)
         return values
 
-    def out_order_depth_first_traversal(self):
+    def out_order_depth_first_traversal(self) -> list:
         return self._out_order_depth_first_traversal_recursive_helper_function(self.root, [])
 
-    def _out_order_depth_first_traversal_recursive_helper_function(self, node: Node, values: list):
+    def _out_order_depth_first_traversal_recursive_helper_function(self, node: Node, values: list) -> list:
         if node is None:
             return values
         self._out_order_depth_first_traversal_recursive_helper_function(node.left, values)
