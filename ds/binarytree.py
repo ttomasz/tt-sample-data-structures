@@ -47,5 +47,13 @@ class BinaryTree:
         self.test(node.left)
         self.test(node.right)
 
-    def breadth_first_traversal(self):
-        pass
+    def breadth_first_traversal(self) -> list:
+        list_of_nodes = [self.root]
+
+        for n in list_of_nodes:
+            if n.left is not None:
+                list_of_nodes.append(n.left)
+            if n.right is not None:
+                list_of_nodes.append(n.right)
+
+        return list_of_nodes
