@@ -1,1 +1,1 @@
-Just some notes made while learning about data structures.
+Just some notes made while learning about data structures and algorithms.
