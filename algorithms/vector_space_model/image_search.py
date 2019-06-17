@@ -22,11 +22,14 @@ def build_matrix_from_files(list_of_paths: list, bins: int = 3*32) -> dict:
     matrix = {}
     for path in list_of_paths:
         if isfile(path):
-            img = Image.open(path)
-            if img.mode == 'RGB' and img.getbands() == ('R', 'G', 'B'):
-                matrix[path] = histogram(img.histogram(), bins)
-            else:
-                print('File:', path, 'is not an RGB image or contains different set of bands than expected.')
+            try:
+                img = Image.open(path)
+                if img.mode == 'RGB' and img.getbands() == ('R', 'G', 'B'):
+                    matrix[path] = histogram(img.histogram(), bins)
+                else:
+                    print('File:', path, 'is not an RGB image or contains different set of bands than expected.')
+            except Exception:
+                print('problem opening file:', path, ', ignoring it')
         else:
             print('Not a valid file path:', path)
     return matrix
